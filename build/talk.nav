@@ -1,0 +1,85 @@
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\beamer@subsectionentry {0}{0}{1}{3}{Basics}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{1}{1}{3}{What is an incident?}}
+\headcommand {\slideentry {0}{1}{1}{3/5}{Basics}{0}}
+\headcommand {\beamer@framepages {3}{5}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{1}{2}{6}{What is an incident retrospective?}}
+\headcommand {\slideentry {0}{1}{2}{6/8}{Basics}{0}}
+\headcommand {\beamer@framepages {6}{8}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{1}{3}{9}{Why is an incident retrospective?}}
+\headcommand {\slideentry {0}{1}{3}{9/10}{Basics}{0}}
+\headcommand {\beamer@framepages {9}{10}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{1}{4}{11}{What is root cause analysis?}}
+\headcommand {\slideentry {0}{1}{4}{11/12}{Basics}{0}}
+\headcommand {\beamer@framepages {11}{12}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{1}{5}{13}{Why not root cause analysis?}}
+\headcommand {\slideentry {0}{1}{5}{13/15}{Basics}{0}}
+\headcommand {\beamer@framepages {13}{15}}
+\headcommand {\beamer@subsectionpages {3}{15}}
+\headcommand {\beamer@subsectionentry {0}{0}{2}{16}{System Theory Basics}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{2}{1}{16}{System}}
+\headcommand {\slideentry {0}{2}{1}{16/17}{System Theory Basics}{0}}
+\headcommand {\beamer@framepages {16}{17}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{2}{2}{18}{Environment}}
+\headcommand {\slideentry {0}{2}{2}{18/19}{System Theory Basics}{0}}
+\headcommand {\beamer@framepages {18}{19}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{2}{3}{20}{Control}}
+\headcommand {\slideentry {0}{2}{3}{20/21}{System Theory Basics}{0}}
+\headcommand {\beamer@framepages {20}{21}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{2}{4}{22}{Loss}}
+\headcommand {\slideentry {0}{2}{4}{22/22}{System Theory Basics}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{2}{5}{23}{Safety Control}}
+\headcommand {\slideentry {0}{2}{5}{23/24}{System Theory Basics}{0}}
+\headcommand {\beamer@framepages {23}{24}}
+\headcommand {\beamer@subsectionpages {16}{24}}
+\headcommand {\beamer@subsectionentry {0}{0}{3}{25}{CAST Pt 1.: Analyze}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{3}{1}{25}{Hazard}}
+\headcommand {\slideentry {0}{3}{1}{25/26}{CAST Pt 1.: Analyze}{0}}
+\headcommand {\beamer@framepages {25}{26}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{3}{2}{27}{Timeline}}
+\headcommand {\slideentry {0}{3}{2}{27/28}{CAST Pt 1.: Analyze}{0}}
+\headcommand {\beamer@framepages {27}{28}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{3}{3}{29}{Loss}}
+\headcommand {\slideentry {0}{3}{3}{29/29}{CAST Pt 1.: Analyze}{0}}
+\headcommand {\beamer@framepages {29}{29}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{3}{4}{30}{Loss Analysis}}
+\headcommand {\slideentry {0}{3}{4}{30/32}{CAST Pt 1.: Analyze}{0}}
+\headcommand {\beamer@framepages {30}{32}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{3}{5}{33}{Safety Control Failures}}
+\headcommand {\slideentry {0}{3}{5}{33/34}{CAST Pt 1.: Analyze}{0}}
+\headcommand {\beamer@framepages {33}{34}}
+\headcommand {\beamer@subsectionpages {25}{34}}
+\headcommand {\beamer@subsectionentry {0}{0}{4}{35}{CAST Pt. 2: Improve}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{4}{1}{35}{Safety Control Problems}}
+\headcommand {\slideentry {0}{4}{1}{35/35}{CAST Pt. 2: Improve}{0}}
+\headcommand {\beamer@framepages {35}{35}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{4}{2}{36}{Missing Safety Controls}}
+\headcommand {\slideentry {0}{4}{2}{36/36}{CAST Pt. 2: Improve}{0}}
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{4}{3}{37}{Systemic Problems}}
+\headcommand {\slideentry {0}{4}{3}{37/38}{CAST Pt. 2: Improve}{0}}
+\headcommand {\beamer@framepages {37}{38}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{4}{4}{39}{Improvement Plan}}
+\headcommand {\slideentry {0}{4}{4}{39/41}{CAST Pt. 2: Improve}{0}}
+\headcommand {\beamer@framepages {39}{41}}
+\headcommand {\beamer@subsectionpages {35}{41}}
+\headcommand {\beamer@subsectionentry {0}{0}{5}{42}{Summary}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{5}{1}{42}{Plan}}
+\headcommand {\slideentry {0}{5}{1}{42/42}{Summary}{0}}
+\headcommand {\beamer@framepages {42}{42}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{5}{2}{43}{Apply}}
+\headcommand {\slideentry {0}{5}{2}{43/46}{Summary}{0}}
+\headcommand {\beamer@framepages {43}{46}}
+\headcommand {\beamer@subsubsectionentry {0}{0}{5}{3}{47}{Improve}}
+\headcommand {\slideentry {0}{5}{3}{47/47}{Summary}{0}}
+\headcommand {\beamer@framepages {47}{47}}
+\headcommand {\beamer@partpages {1}{47}}
+\headcommand {\beamer@subsectionpages {42}{47}}
+\headcommand {\beamer@sectionpages {1}{47}}
+\headcommand {\beamer@documentpages {47}}
+\headcommand {\gdef \inserttotalframenumber {24}}

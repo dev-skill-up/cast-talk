@@ -1,0 +1,486 @@
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{fancyvrb}
+
+\newcommand{\passthrough}[1]{\lstset{mathescape=false}#1\lstset{mathescape=true}}
+\newcommand{\tightlist}{}
+
+\title{CAST Incident Retrospectives}
+\author{Moshe Zadka -- https://cobordism.com}
+\date{}
+
+\begin{document}
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Acknowledgement of Country}
+
+Belmont (in San Francisco Bay Area Peninsula)
+
+Ancestral homeland of the Ramaytush Ohlone people
+
+\end{frame}
+
+I live in Belmont, in the San Francisco Bay Area Peninsula. I wish to
+acknowledge it as the ancestral homeland of the Ramaytush Ohlone people.
+
+\hypertarget{basics}{%
+\subsection{Basics}\label{basics}}
+
+\hypertarget{what-is-an-incident}{%
+\subsubsection{What is an incident?}\label{what-is-an-incident}}
+
+\begin{frame}
+\frametitle{What is an Incident?}
+
+Bad\pause
+
+Unplanned\pause
+
+Willing to stop
+
+\end{frame}
+
+An incident is something that is:
+
+\begin{itemize}
+\tightlist
+\item
+  Bad: If it wasn't a problem, there's no issue.
+\item
+  Unplanned: If the problem was \emph{planned}, it is not an incident.
+  This is not the same as saying the problem was \emph{caused} by a
+  planned thing. If a website was planned to shut down for three hours
+  for an upgrade, and it shut down, this is fine. If an upgrade caused a
+  three hour outage, it might be an incident.
+\item
+  Willing to stop: An incident has to be something that, at least in
+  principle, we are willing to put effort into stopping. If an
+  earthquake took out our datacenter, and the risk of earthquakes is
+  low, we might not be willing to put in the effort to stop it.
+\end{itemize}
+
+\hypertarget{what-is-an-incident-retrospective}{%
+\subsubsection{What is an incident
+retrospective?}\label{what-is-an-incident-retrospective}}
+
+\begin{frame}
+\frametitle{What is an Incident Retrospective?}
+
+(Post-mortem)\pause
+
+Analyze\pause
+
+Improve
+
+\end{frame}
+
+An incident retrospective is a process that allows us to analyze the
+incident and improve our future resilience based on the analysis. The
+process usually has both an async part, where someone does the research,
+analysis, and suggested improvement, and a synchronous part, where the
+analysis is validated and the team commits to the improvement plan.
+
+\hypertarget{why-is-an-incident-retrospective}{%
+\subsubsection{Why is an incident
+retrospective?}\label{why-is-an-incident-retrospective}}
+
+\begin{frame}
+\frametitle{Why is an Incident Retrospective?}
+
+\pause
+Do better!
+
+\end{frame}
+
+We do incident retrospectives because an incident teaches us about a
+lack of resiliency in our system. We want our systems to be more
+resilient. The ``natural lesson'' of an incident is a poor thing to
+waste.
+
+\hypertarget{what-is-root-cause-analysis}{%
+\subsubsection{What is root cause
+analysis?}\label{what-is-root-cause-analysis}}
+
+\begin{frame}
+\frametitle{What is root cause analysis?}
+
+Find cause...\pause
+eliminate!
+
+
+\end{frame}
+
+Root Cause Analysis, sometimes in the form of the ``five whys'', asks
+``what originally caused the problem?'' The goal of an RCA is to
+\emph{identify} the root cause, and then eliminate it.
+
+Note that this is a crucial piece of RCA: the improvement is to
+\emph{eliminate the root cause}. The theory underlying it is that any
+other step along the way would not have happened without the original
+problem.
+
+\hypertarget{why-not-root-cause-analysis}{%
+\subsubsection{Why not root cause
+analysis?}\label{why-not-root-cause-analysis}}
+
+\begin{frame}
+\frametitle{Why not root cause analysis?}
+
+More than one\pause
+
+Too specific\pause
+
+Not controllable
+
+\end{frame}
+
+Why not do RCA-based analysis?
+
+For one, there might be \emph{more than one} \emph{root} cause. In some
+situations, \emph{two} things had to have happened: without either, the
+incident would not happen.
+
+The root cause might also be \emph{too specific}. If we eliminate the
+root cause, but another one can start the same chain of events, we have
+fixed the \emph{wrong problem}.
+
+Finally, the root cause might be \emph{beyond our boundary of control}.
+If the root cause is ``high customer traffic following a world-wide
+event'', then unless we control the world, we cannot remove the cause.
+
+Sometimes, RCA has morphed into ``contributing cause analysis''. This
+tries to address the issue by suggesting we look at ``all'' things that
+caused the incident. This is a patch on RCA which transforms a poor
+system to a poorly defined system.
+
+Instead, the right way to fix the issue is to go back to the drawing
+board: how do we make systems more resilient? There is a field that
+deals with those issues: systems theory.
+
+\hypertarget{system-theory-basics}{%
+\subsection{System Theory Basics}\label{system-theory-basics}}
+
+\hypertarget{system}{%
+\subsubsection{System}\label{system}}
+
+\begin{frame}
+\frametitle{System}
+
+Components\pause
+
+You control
+
+\end{frame}
+
+Systems theory, like any field, has some technical jargon. These are
+specific terms with precise meaning, different than their meaning in
+regular use.
+
+A \emph{system} is a collection of \emph{components}. A component is
+only in the system if \emph{you} control it.
+
+This means, for example, your co-lo datacenter's power is \emph{not}
+part of your system.
+
+\hypertarget{environment}{%
+\subsubsection{Environment}\label{environment}}
+
+\begin{frame}
+\frametitle{Environment}
+
+Influences behavior\pause
+
+Not system
+
+\end{frame}
+
+The \emph{environment} is anything that influences the behavior of the
+system but is not a part of it. This can include the people who use the
+system, the underlying network infrastructure, or even the weather!
+
+\hypertarget{control}{%
+\subsubsection{Control}\label{control}}
+
+\begin{frame}
+\frametitle{Control}
+
+Input\pause
+
+to output
+
+\end{frame}
+
+A \emph{control} is a part of the component. It is something that takes
+input, from the system or environment, or produces some result or
+output.
+
+An example of a control is a thermostat. The input is a temprature, and
+the output is to connect or disconnect an electric circuit.
+
+\hypertarget{loss}{%
+\subsubsection{Loss}\label{loss}}
+
+\begin{frame}
+\frametitle{Loss}
+
+Undesired behavior
+
+\end{frame}
+
+A system has things it should do. When it does not do these things, the
+technical term is ``loss''.
+
+A loss can be ``our website was unavailable for five seconds, so people
+could not see cat pictures'' or ``we leaked all customers credit cards
+and billions of dollars were stolen''. A loss should always be something
+concrete that someone cares about.
+
+\hypertarget{safety-control}{%
+\subsubsection{Safety Control}\label{safety-control}}
+
+\begin{frame}
+\frametitle{Safety Control}
+
+Control\pause
+
+Prevent loss
+
+\end{frame}
+
+A \emph{safety control} is a control whose purpose is to prevent or
+reduce loss. For example, a \emph{high availability load balancer} will
+prevent loss in the form of a site outage by routing to only healthy
+nodes.
+
+A \emph{safety control} can also be a fire alarm. While it does not
+prevent all loss from a fire, it alerts people to leave, thus preventing
+the loss of human life.
+
+\hypertarget{cast-pt-1.-analyze}{%
+\subsection{CAST Pt 1.: Analyze}\label{cast-pt-1.-analyze}}
+
+\hypertarget{hazard}{%
+\subsubsection{Hazard}\label{hazard}}
+
+\begin{frame}
+\frametitle{Hazard}
+
+Input to system\pause
+
+led to problem
+
+\end{frame}
+
+When analyzing the system, the \emph{hazard} is an input to the system
+that led to the problem. This is a little like the ``RCA'', but has a
+more concrete definition:
+
+\begin{itemize}
+\tightlist
+\item
+  It must come from outside the system
+\item
+  There can be multiple hazards
+\end{itemize}
+
+The job of CAST is not to prevent the hazard. \emph{Knowing} the hazard
+is important regardless.
+
+\hypertarget{timeline}{%
+\subsubsection{Timeline}\label{timeline}}
+
+\begin{frame}
+\frametitle{Timeline}
+
+What happened\pause
+
+When
+
+\end{frame}
+
+The timeline should list everything relevant to the incident. The hazard
+does not need to be the first thing!
+
+Dates of changes to the system that are relevant, for example, often
+predate the hazard. The timeline should not end before the incident was
+completely mitigated.
+
+\hypertarget{loss-1}{%
+\subsubsection{Loss}\label{loss-1}}
+
+\begin{frame}
+\frametitle{Loss}
+
+Why it was bad?
+
+\end{frame}
+
+The next step is to explain the specific loss. There was no incident if
+nobody was harmed. Detail the specific loss incurred.
+
+This can range anywhere from ``three people lost a work hour each
+restoring the system'' to\ldots{} well.
+
+\hypertarget{loss-analysis}{%
+\subsubsection{Loss Analysis}\label{loss-analysis}}
+
+\begin{frame}
+\frametitle{Loss Analysis}
+
+Causal path\pause
+
+Hazard\pause
+
+Loss
+
+\end{frame}
+
+The loss analysis should be based on the timeline. It should analyze the
+causal path that links the hazard to the incident. Each step in this
+should be documented in the timeline.
+
+\hypertarget{safety-control-failures}{%
+\subsubsection{Safety Control Failures}\label{safety-control-failures}}
+
+\begin{frame}
+\frametitle{Safety Control Failures}
+
+For each safety control:\pause
+
+Why it didn't prevent loss
+
+\end{frame}
+
+The hazard would not lead to the loss if the safety controls performed
+correctly. For each relevant safety control, indicate why it failed to
+prevent the loss.
+
+\hypertarget{cast-pt.-2-improve}{%
+\subsection{CAST Pt. 2: Improve}\label{cast-pt.-2-improve}}
+
+\hypertarget{safety-control-problems}{%
+\subsubsection{Safety Control Problems}\label{safety-control-problems}}
+
+\begin{frame}
+\frametitle{Safety Control Problems}
+
+Suggest fixes!
+
+\end{frame}
+
+For safety control that failed to prevent the loss, explain what problem
+led to failing to do so. Indicate how it could be fixed.
+
+\hypertarget{missing-safety-controls}{%
+\subsubsection{Missing Safety Controls}\label{missing-safety-controls}}
+
+\begin{frame}
+\frametitle{Missing Safety Controls}
+
+Suggest implementation!
+
+\end{frame}
+
+Often, the incident shows the lack of appropriate safety controls. What
+additional safety controls were missing that would have prevented the
+loss?
+
+\hypertarget{systemic-problems}{%
+\subsubsection{Systemic Problems}\label{systemic-problems}}
+
+\begin{frame}
+\frametitle{Systemic Problems}
+
+Process\pause
+
+Incorrect assumptions
+
+\end{frame}
+
+Finally, this is a catch-all category. What systemic problems in our
+processes led to this?
+
+For example, safety controls might be of poor quality because they were
+rushed. Alternatively, maybe lack of testing of the controls is the
+issue.
+
+\hypertarget{improvement-plan}{%
+\subsubsection{Improvement Plan}\label{improvement-plan}}
+
+\begin{frame}
+\frametitle{Improvement plan}
+
+Concrete\pause
+
+Specific\pause
+
+List
+
+\end{frame}
+
+An improvement plan should be written based on the issues above. Each
+item in the improvement plan should be \emph{concrete} and
+\emph{specific}. Concrete means that it is something someone can do.
+Specific means that it is clear when it has been done.
+
+List all such items under the improvement plan.
+
+\hypertarget{summary}{%
+\subsection{Summary}\label{summary}}
+
+\hypertarget{plan}{%
+\subsubsection{Plan}\label{plan}}
+
+\begin{frame}
+\frametitle{CAST: Plan}
+
+Process ready
+
+\end{frame}
+
+An incident is going to happen. Plan your CAST-based process before, so
+you know what do do after.
+
+\hypertarget{apply}{%
+\subsubsection{Apply}\label{apply}}
+
+\begin{frame}
+\frametitle{CAST: Apply}
+
+Incident?\pause
+
+Assign\pause
+
+Review\pause
+
+Act
+
+\end{frame}
+
+After an incident, assign someone to do the CAST investigation. Once the
+report has been written, have the team review it to see if anything is
+missing or incorrect. After the team signs off on it, implement the
+improvement plan.
+
+\hypertarget{improve}{%
+\subsubsection{Improve}\label{improve}}
+
+\begin{frame}
+\frametitle{CAST: Improve}
+
+CAST is a Safety Control
+
+\end{frame}
+
+CAST itself can be thought of a safety control. Improvement plans should
+check previous incident retrospectives, and see if anything needs to be
+done differently.
+
+\end{document}
